@@ -2572,7 +2572,7 @@ input, select, textarea {
 		-webkit-flex-wrap: wrap;
 		-ms-flex-wrap: wrap;
 		flex-wrap: wrap;
-		postiion: relative;
+		position: relative;
 		margin: -2.5em 0 0 -2.5em;
 	}
 
@@ -3327,7 +3327,7 @@ input, select, textarea {
 			}
 
 		}
-	/* Force all project tiles to have a consistent height and look */
+
 	.tiles article > .image {
 		height: 375px !important; 
 		overflow: hidden;         
