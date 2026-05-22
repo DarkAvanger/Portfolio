@@ -7,7 +7,8 @@
         <link rel="stylesheet" href="assets/css/main.css" />
         <noscript><link rel="stylesheet" href="assets/css/noscript.css" /></noscript>
         
-        <!-- Added Custom Styles for Justify and Layout -->
+        <link href="https://cdnjs.cloudflare.com/ajax/libs/prism/1.29.0/themes/prism-tomorrow.min.css" rel="stylesheet" />
+        
         <style>
             .justify-text {
                 text-align: justify;
@@ -24,6 +25,7 @@
             }
             .project-row .text-content {
                 flex: 1;
+                min-width: 0; 
             }
             .project-img {
                 width: 45%;
@@ -31,7 +33,6 @@
                 height: auto;
             }
             
-            /* Stacks the layout on smaller screens */
             @media screen and (max-width: 768px) {
                 .project-row, .project-row.reverse {
                     flex-direction: column;
@@ -134,35 +135,55 @@
             <script src="assets/js/breakpoints.min.js"></script>
             <script src="assets/js/util.js"></script>
             <script src="assets/js/main.js"></script>
+            
+            <script src="https://cdnjs.cloudflare.com/ajax/libs/prism/1.29.0/prism.min.js"></script>
+            <script src="https://cdnjs.cloudflare.com/ajax/libs/prism/1.29.0/components/prism-mel.min.js"></script>
 
             <script>
                 const projectData = {
-                    "not-my-war": {
+                   "not-my-war": {
                         title: "Not My War",
                         banner: "", 
                         video: "", 
                         content: `
                             <h3>Biped Robot Rig - Video Game</h3>
                             
-                            <div class="project-row" style="margin-bottom: 5em;">
-                                <img src="images/axolotl.png" alt="Not My War Rig Image 1" class="project-img">
+                            <!-- Added flex-start here to align the first paragraph with the top of the image -->
+                            <div class="project-row" style="margin-bottom: 5em; align-items: flex-start;">
+                                <img src="images/robot-rig.png" alt="Not My War Rig Image 1" class="project-img">
                                 <div class="text-content">
                                     <p class="justify-text">In this project, I was responsible for developing the rig for a bipedal robot and various props compatible with Unreal Engine for the video game Not My War. During development, my role transitioned to solving any technical difficulties and asset compatibility issues when integrating them into Unreal, as well as optimizing rigs.</p>
+                                    
+                                    <!-- Added your small image here! -->
+                                    <img src="images/24Logo.jfif" alt="Additional Rig Detail" style="max-width: 175px; border-radius: 8px; margin-top: 1.5em; display: block; margin-left: auto;">
                                 </div>
                             </div>
 
-                            <div class="project-row reverse">
-                                <img src="images/nodeSetUp-Robot.png" alt="Not My War Rig Image 2" class="project-img">
+                            <div class="project-row reverse" style="align-items: flex-start;">
+                                <div class="project-img" style="display: flex; flex-direction: column; gap: 1em;">
+                                    <img src="images/nodeSetUp-Robot.png" alt="Not My War Rig Image 2" style="width: 100%; border-radius: 8px;">
+                                    
+<!-- Keep this pushed to the left edge! -->
+<pre style="border-radius: 8px; margin-top: 0; margin-bottom: 0;"><code class="language-mel">float $t = time * tube_l_ctr.vibrationSpeed;  
+
+tubeCtr_l_vibration.translateX = noise($t) * tube_l_ctr.vibrationAmount;
+tubeCtr_l_vibration.translateY = noise($t + 1) * tube_l_ctr.vibrationAmount * 0.5;
+tubeCtr_l_vibration.translateZ = noise($t + 2) * tube_l_ctr.vibrationAmount;</code></pre>
+
+                                </div>
+                                
                                 <div class="text-content">
-                                    <p class="justify-text">Procedural animation, main character rig opt/improve/ props rig?</p>
+                                    <p class="justify-text">Beyond the main rig, a major focus for this character was automating secondary motion. Animating continuous, high-frequency mechanical jitter by hand is tedious and difficult to iterate on. To solve this, I developed a lightweight procedural animation system directly integrated into the rig to handle the vibration of the robot's external tubes.</p>
+                                    
+                                    <p class="justify-text">The setup, shown in the node network and the expression used below, is a simple but highly efficient solution. It utilizes the Maya playback timeslider to drive a noise function, generating a continuous, randomized offset. By passing this time variable into the translation channels of the tube controls, the rig automatically animates itself whenever the timeline plays. I also added the vibrationSpeed and vibrationAmount as attributes, allowing animators full art direction over the intensity of the effect without needing to plot a single keyframe.</p>
                                 </div>
                             </div>
                             
                             <div style="text-align: center; margin-top: 5em; margin-bottom: 1em;">
                                 <a href="https://store.steampowered.com/app/4034810/Not_My_War/" target="_blank" class="button primary" style="font-size: 1.25em; padding: 0 2em; min-width: 250px;">
                                     View on Steam
-                                    </a>
-                                    </div>
+                                </a>
+                            </div>
                         `
                     },
                     "horse": {
@@ -170,8 +191,7 @@
                         banner: "", 
                         video: "https://player.vimeo.com/video/1193275308?title=0&byline=0&portrait=0", 
                         content: `
-                            <p>Six-legged creature proxy geometry workflow and rigging setup designed for complex mechanical movement.</p>
-                            <p>Here I used Python to automate the leg IK setup...</p>
+                            <p>Work in progress</p>
                         `
                     },
                     "facial-rig": {
@@ -179,7 +199,7 @@
                         banner: "", 
                         video: "https://player.vimeo.com/video/1193275308?title=0&byline=0&portrait=0",
                         content: `
-                            <p>Custom skeletal hierarchy optimized for Unreal Engine 5.</p>
+                            <p>Work in progress</p>
                         `
                     },
                     "axolotl": {
@@ -187,7 +207,7 @@
                         banner: "", 
                         video: "https://player.vimeo.com/video/1193275308?title=0&byline=0&portrait=0",
                         content: `
-                            <p>Custom skeletal hierarchy optimized for Unreal Engine 5.</p>
+                            <p>Work in progress</p>
                         `
                     },
                     "arachnoid-robot": {
@@ -195,7 +215,7 @@
                         banner: "", 
                         video: "https://player.vimeo.com/video/1193275308?title=0&byline=0&portrait=0",
                         content: `
-                            <p>Custom skeletal hierarchy optimized for Unreal Engine 5.</p>
+                            <p>Work in progress</p>
                         `
                     },
                     "auto-rigger": {
@@ -203,7 +223,7 @@
                         banner: "", 
                         video: "https://player.vimeo.com/video/1193275308?title=0&byline=0&portrait=0",
                         content: `
-                            <p>This script automates joint placement and control generation in Maya...</p>
+                            <p>Work in progress</p>
                         `
                     },
                     "weight-painting": {
@@ -211,7 +231,7 @@
                         banner: "", 
                         video: "https://player.vimeo.com/video/1193275308?title=0&byline=0&portrait=0",
                         content: `
-                            <p>Custom UI tool to streamline skin weight mirroring and smoothing.</p>
+                            <p>Work in progress</p>
                         `
                     },
                     "engine-exporter": {
@@ -219,7 +239,7 @@
                         banner: "", 
                         video: "https://player.vimeo.com/video/1193275308?title=0&byline=0&portrait=0",
                         content: `
-                            <p>One-click batch exporter for Unity and Unreal Engine integration.</p>
+                            <p>Work in progress</p>
                         `
                     }
                 };
