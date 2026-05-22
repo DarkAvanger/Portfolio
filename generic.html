@@ -6,6 +6,41 @@
         <meta name="viewport" content="width=device-width, initial-scale=1, user-scalable=no" />
         <link rel="stylesheet" href="assets/css/main.css" />
         <noscript><link rel="stylesheet" href="assets/css/noscript.css" /></noscript>
+        
+        <!-- Added Custom Styles for Justify and Layout -->
+        <style>
+            .justify-text {
+                text-align: justify;
+                hyphens: auto;
+            }
+            .project-row {
+                display: flex;
+                align-items: center;
+                gap: 2em;
+                margin-bottom: 2em;
+            }
+            .project-row.reverse {
+                flex-direction: row-reverse;
+            }
+            .project-row .text-content {
+                flex: 1;
+            }
+            .project-img {
+                width: 45%;
+                border-radius: 8px;
+                height: auto;
+            }
+            
+            /* Stacks the layout on smaller screens */
+            @media screen and (max-width: 768px) {
+                .project-row, .project-row.reverse {
+                    flex-direction: column;
+                }
+                .project-img {
+                    width: 100%;
+                }
+            }
+        </style>
     </head>
     <body class="is-preload">
 
@@ -105,14 +140,29 @@
                     "not-my-war": {
                         title: "Not My War",
                         banner: "", 
-                        video: "https://player.vimeo.com/video/1193275308?title=0&byline=0&portrait=0", 
+                        video: "", 
                         content: `
-                            <h3>Rigging Supervisor</h3>
-                            <p>Ensured asset compatibility for the Steam release. Detailed pipeline breakdowns go here.</p>
+                            <h3>Biped Robot Rig - Video Game</h3>
                             
-                            <p>
-                                <a href="https://store.steampowered.com/app/4034810/Not_My_War/" target="_blank" class="button primary small">View on Steam</a>
-                            </p>
+                            <div class="project-row" style="margin-bottom: 5em;">
+                                <img src="images/axolotl.png" alt="Not My War Rig Image 1" class="project-img">
+                                <div class="text-content">
+                                    <p class="justify-text">In this project, I was responsible for developing the rig for a bipedal robot and various props compatible with Unreal Engine for the video game Not My War. During development, my role transitioned to solving any technical difficulties and asset compatibility issues when integrating them into Unreal, as well as optimizing rigs.</p>
+                                </div>
+                            </div>
+
+                            <div class="project-row reverse">
+                                <img src="images/nodeSetUp-Robot.png" alt="Not My War Rig Image 2" class="project-img">
+                                <div class="text-content">
+                                    <p class="justify-text">Procedural animation, main character rig opt/improve/ props rig?</p>
+                                </div>
+                            </div>
+                            
+                            <div style="text-align: center; margin-top: 5em; margin-bottom: 1em;">
+                                <a href="https://store.steampowered.com/app/4034810/Not_My_War/" target="_blank" class="button primary" style="font-size: 1.25em; padding: 0 2em; min-width: 250px;">
+                                    View on Steam
+                                    </a>
+                                    </div>
                         `
                     },
                     "horse": {
@@ -166,7 +216,7 @@
                     },
                     "engine-exporter": {
                         title: "Engine Exporter",
-                        banner: "", // add asset here
+                        banner: "", 
                         video: "https://player.vimeo.com/video/1193275308?title=0&byline=0&portrait=0",
                         content: `
                             <p>One-click batch exporter for Unity and Unreal Engine integration.</p>

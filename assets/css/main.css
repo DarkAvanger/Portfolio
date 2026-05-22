@@ -3338,5 +3338,8 @@ input, select, textarea {
 		object-fit: cover;        
 		object-position: center;  
 	}
-
+	
+	.justify-text {
+    text-align: justify;
+}
 	
